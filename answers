@@ -1,0 +1,30 @@
+
+#1.
+
+def priceCheck(products, productPrices, productSold,soldPrice):
+    erorr_count = 0
+    dict_price = {products[i]: productPrices[i] for i in range(len(products))}
+    dict_sold = {productSold[i]: soldPrice[i] for i in range(len(productSold))}
+
+    for sold in dict_sold.keys():
+        if sold in dict_price.keys() and dict_sold[sold]!= dict_price[sold]:
+           erorr_count = erorr_count+1
+
+    return erorr_count
+
+
+#2.
+
+SELECT DEPARTMENT.name, count(EMPLOYEE.id) as number_of_employee        
+from EMPLOYEE
+left join DEPARTMENT on (DEPARTMENT.id = EMPLOYEE.DEPT_ID)
+group by DEPARTMENT.id;
+
+
+#3.
+
+def sum_of_digits(num):
+    if num == 0:
+        return 0
+    else:
+        return (num%10) + sum_of_digits((num//10))
